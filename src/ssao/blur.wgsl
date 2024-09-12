@@ -7,7 +7,7 @@ struct Uniforms {
 @group(0) @binding(0)
 var<uniform> uniforms: Uniforms;
 @group(0) @binding(1)
-var r_output_texture: texture_storage_2d<r8unorm, write>;
+var r_output_texture: texture_storage_2d<rgba16float, write>;
 @group(0) @binding(2)
 var r_ssao_texture: texture_2d<f32>;
 @group(0) @binding(3)

@@ -57,7 +57,7 @@ const NOISE_TEXTURE_FORMAT: wgpu::TextureFormat = wgpu::TextureFormat::Rg32Float
 const SSAO_WORK_GROUP_SIZE: [u32; 2] = [8, 8];
 pub const SSAO_NOISE_TEXTURE_SIZE: u32 = 64;
 /// Output texture format
-pub const SSAO_TEXTURE_FORMAT: wgpu::TextureFormat = wgpu::TextureFormat::R8Unorm;
+pub const SSAO_TEXTURE_FORMAT: wgpu::TextureFormat = wgpu::TextureFormat::Rgba16Float;
 
 /// Contains pipelines and resources that only need to exist once
 pub struct SsaoEffect {
