@@ -458,6 +458,35 @@ impl SsaoResources {
             cpass.dispatch_workgroups(work_group_count_x, work_group_count_y, 1);
         }
     }
+
+    /// Changes the number of samples used by the SSAO shader.
+    ///
+    /// Takes both depth and normal texture views because the SSAO resources need to be recreated from scratch.
+    ///
+    /// # Arguments
+    /// - `samples_count` - Number of samples per pixel
+    /// - `device` - The device
+    /// - `queue` - The queue
+    /// - `depth_texture_view` - Depth texture view
+    /// - `normal_texture_view` - Normal texture view
+    pub fn update_samples_count(
+        &mut self,
+        samples_count: u32,
+        device: &wgpu::Device,
+        queue: &wgpu::Queue,
+        depth_texture_view: &wgpu::TextureView,
+        normal_texture_view: &wgpu::TextureView,
+    ) {
+        *self = SsaoResources::new(
+            &SsaoEffect::new(device, queue, self.blur_bind_groups.is_some()),
+            device,
+            queue,
+            depth_texture_view,
+            normal_texture_view,
+            self.textures.size,
+            samples_count,
+        );
+    }
 }
 
 fn create_bind_groups(
