@@ -487,6 +487,11 @@ impl SsaoResources {
             samples_count,
         );
     }
+
+    /// Returns the number of samples per pixel
+    pub fn samples_count(&self) -> u32 {
+        self.samples.count
+    }
 }
 
 fn create_bind_groups(
